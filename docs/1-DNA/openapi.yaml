@@ -1,0 +1,389 @@
+openapi: 3.0.3
+info:
+  title: QANTUM API
+  description: |
+    # 🧠 QANTUM - AI-Powered QA Automation Framework
+    
+    REST API for interacting with QANTUM's test automation capabilities.
+    
+    ## Features
+    - 🤖 AI-powered test generation
+    - 🔄 Self-healing selectors
+    - 👁️ Vision AI testing
+    - 📊 Test reporting
+    
+    ## Authentication
+    API key authentication via `X-API-Key` header.
+    
+  version: 1.0.0
+  contact:
+    name: QANTUM Support
+    email: support@QAntum.dev
+  license:
+    name: Proprietary
+    url: https://github.com/papica777-eng/QA-Framework/blob/main/LICENSE
+
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+  - url: https://api.QAntum.dev/v1
+    description: Production server (coming soon)
+
+tags:
+  - name: Tests
+    description: Test execution and management
+  - name: AI
+    description: AI-powered features
+  - name: Vision
+    description: Visual testing capabilities
+  - name: Reports
+    description: Test reports and analytics
+  - name: Health
+    description: System health checks
+
+paths:
+  /test:
+    get:
+      tags:
+        - Health
+      summary: Health check
+      description: Check if the server is running
+      responses:
+        '200':
+          description: Server is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: OK
+                  version:
+                    type: string
+                    example: "9.0"
+
+  /chat:
+    post:
+      tags:
+        - AI
+      summary: Chat with AI
+      description: Send a message to the AI assistant for test generation or QA help
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                  description: User message
+                  example: "Generate test cases for login functionality"
+                mode:
+                  type: string
+                  enum: [qa, cognitive, vision]
+                  default: qa
+                  description: AI mode to use
+      responses:
+        '200':
+          description: AI response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+
+  /run:
+    post:
+      tags:
+        - Tests
+      summary: Run tests
+      description: Execute a test or test suite
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - task
+              properties:
+                task:
+                  type: string
+                  description: Test task description
+                  example: "Open google.com and search for Selenium"
+                options:
+                  type: object
+                  properties:
+                    headless:
+                      type: boolean
+                      default: false
+                    screenshot:
+                      type: boolean
+                      default: true
+                    selfHeal:
+                      type: boolean
+                      default: true
+                    timeout:
+                      type: integer
+                      default: 30000
+      responses:
+        '200':
+          description: Test execution result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestResult'
+
+  /vision/analyze:
+    post:
+      tags:
+        - Vision
+      summary: Analyze screenshot
+      description: Use Vision AI to analyze a screenshot for UI issues
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: Screenshot image
+                mode:
+                  type: string
+                  enum: [bugHunting, uiVerification, accessibility, ocr]
+                  default: bugHunting
+      responses:
+        '200':
+          description: Vision analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisionResult'
+
+  /vision/screenshot:
+    post:
+      tags:
+        - Vision
+      summary: Take screenshot and analyze
+      description: Capture browser screenshot and analyze with Vision AI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: URL to screenshot
+                  example: "https://example.com"
+                mode:
+                  type: string
+                  enum: [bugHunting, uiVerification, accessibility]
+                  default: uiVerification
+      responses:
+        '200':
+          description: Screenshot and analysis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisionResult'
+
+  /reports:
+    get:
+      tags:
+        - Reports
+      summary: List reports
+      description: Get list of all test reports
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [passed, failed, all]
+            default: all
+      responses:
+        '200':
+          description: List of reports
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReportSummary'
+
+  /dashboard:
+    get:
+      tags:
+        - Reports
+      summary: Dashboard data
+      description: Get aggregated data for the dashboard
+      responses:
+        '200':
+          description: Dashboard statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardData'
+
+  /self-heal/history:
+    get:
+      tags:
+        - Tests
+      summary: Self-healing history
+      description: Get history of self-healed selectors
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: Self-healing events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SelfHealEvent'
+
+components:
+  schemas:
+    ChatResponse:
+      type: object
+      properties:
+        reply:
+          type: string
+          description: AI response text
+        code:
+          type: string
+          description: Generated code (if any)
+        mode:
+          type: string
+          description: AI mode used
+
+    TestResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        duration:
+          type: integer
+          description: Execution time in ms
+        steps:
+          type: array
+          items:
+            type: object
+            properties:
+              action:
+                type: string
+              status:
+                type: string
+              screenshot:
+                type: string
+        selfHealed:
+          type: boolean
+        healingDetails:
+          type: object
+          properties:
+            originalSelector:
+              type: string
+            newSelector:
+              type: string
+            strategy:
+              type: string
+
+    VisionResult:
+      type: object
+      properties:
+        analysis:
+          type: string
+          description: AI analysis text
+        issues:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              severity:
+                type: string
+                enum: [low, medium, high, critical]
+              description:
+                type: string
+              location:
+                type: string
+        screenshot:
+          type: string
+          description: Base64 encoded screenshot
+
+    ReportSummary:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        date:
+          type: string
+          format: date-time
+        passed:
+          type: integer
+        failed:
+          type: integer
+        duration:
+          type: integer
+
+    DashboardData:
+      type: object
+      properties:
+        totalTests:
+          type: integer
+        passRate:
+          type: number
+        healed:
+          type: integer
+        avgTime:
+          type: number
+        recentRuns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportSummary'
+
+    SelfHealEvent:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        testName:
+          type: string
+        originalSelector:
+          type: string
+        newSelector:
+          type: string
+        strategy:
+          type: string
+        success:
+          type: boolean
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+security:
+  - ApiKeyAuth: []

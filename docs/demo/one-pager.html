@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QANTUM - Product One-Pager</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #fff;
+            color: #1a1a2e;
+            width: 210mm;
+            min-height: 297mm;
+            margin: auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            padding: 30px 40px;
+        }
+        .logo-row { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .logo { font-size: 2.5rem; }
+        .brand { font-size: 1.8rem; font-weight: bold; }
+        .tagline { font-size: 1rem; color: #a0a0a0; }
+        .usp-box {
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .main { padding: 30px 40px; }
+        h2 { 
+            color: #7b2cbf; 
+            font-size: 1.3rem; 
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #7b2cbf;
+        }
+        .section { margin-bottom: 25px; }
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #7b2cbf;
+        }
+        .feature-title { font-weight: bold; margin-bottom: 5px; }
+        .feature-desc { font-size: 0.85rem; color: #666; }
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .pricing-table th, .pricing-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .pricing-table th { background: #7b2cbf; color: #fff; }
+        .pricing-table tr:nth-child(even) { background: #f8f9fa; }
+        .highlight { color: #7b2cbf; font-weight: bold; }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .comparison-box {
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .vs-them { background: #ffebee; }
+        .vs-us { background: #e8f5e9; }
+        .comparison-title { font-weight: bold; margin-bottom: 10px; }
+        .comparison-list { font-size: 0.85rem; }
+        .comparison-list li { margin: 5px 0; }
+        .cta-box {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .cta-title { font-size: 1.2rem; margin-bottom: 10px; }
+        .contact-info { display: flex; justify-content: center; gap: 30px; margin-top: 10px; }
+        .contact-item { font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-row">
+            <span class="logo">🧠</span>
+            <span class="brand">QANTUM v9.0</span>
+        </div>
+        <p class="tagline">Autonomous AI QA Framework with Self-Healing Tests & Cognitive Memory</p>
+        <div class="usp-box">
+            🚀 100% LOCAL AI - Zero API Costs - Zero Cloud Dependency - Your Data Stays Private
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="section">
+            <h2>🎯 Key Features</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-title">🔄 Self-Healing Tests</div>
+                    <div class="feature-desc">15+ strategies automatically fix broken selectors. Tests never fail due to UI changes.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">👁️ Vision AI Testing</div>
+                    <div class="feature-desc">Llava-powered visual analysis detects UI bugs, layout issues, and accessibility problems.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">🧠 Cognitive Memory</div>
+                    <div class="feature-desc">Agent learns from past executions. Short-term, long-term, and episodic memory systems.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">🤖 Autonomous Mode</div>
+                    <div class="feature-desc">SEE→THINK→ACT→OBSERVE→REFLECT architecture. Full mouse/keyboard control.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💰 Pricing</h2>
+            <table class="pricing-table">
+                <tr>
+                    <th>Plan</th>
+                    <th>Price</th>
+                    <th>Best For</th>
+                </tr>
+                <tr>
+                    <td>Community</td>
+                    <td>Free</td>
+                    <td>Personal projects, Learning</td>
+                </tr>
+                <tr>
+                    <td><span class="highlight">Professional</span></td>
+                    <td><span class="highlight">$299/mo</span></td>
+                    <td>Small teams, Startups</td>
+                </tr>
+                <tr>
+                    <td>Enterprise</td>
+                    <td>$999/mo</td>
+                    <td>Large teams, Full autonomy</td>
+                </tr>
+                <tr>
+                    <td>Source License</td>
+                    <td>$4,999 once</td>
+                    <td>White-label, Resellers</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>⚔️ Why QANTUM?</h2>
+            <div class="comparison">
+                <div class="comparison-box vs-them">
+                    <div class="comparison-title">❌ Other Solutions</div>
+                    <ul class="comparison-list">
+                        <li>$500-2000/month cloud costs</li>
+                        <li>Data sent to third-party servers</li>
+                        <li>API rate limits</li>
+                        <li>Internet dependency</li>
+                        <li>Vendor lock-in</li>
+                    </ul>
+                </div>
+                <div class="comparison-box vs-us">
+                    <div class="comparison-title">✅ QANTUM</div>
+                    <ul class="comparison-list">
+                        <li><strong>$0 API costs</strong> - runs locally</li>
+                        <li><strong>100% private</strong> - data never leaves</li>
+                        <li><strong>Unlimited usage</strong> - no limits</li>
+                        <li><strong>Works offline</strong> - no internet needed</li>
+                        <li><strong>Own your data</strong> - no lock-in</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <div class="cta-title">🚀 Ready to Transform Your QA?</div>
+            <p>Start with a free trial or contact us for enterprise solutions</p>
+            <div class="contact-info">
+                <span class="contact-item">📧 [YOUR EMAIL]</span>
+                <span class="contact-item">🌐 [YOUR WEBSITE]</span>
+                <span class="contact-item">📞 [YOUR PHONE]</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

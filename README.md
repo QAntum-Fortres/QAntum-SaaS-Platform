@@ -1,5 +1,7 @@
 # ⚛️ QAntum Prime v35.0 - THE SINGULARITY
 
+> **[🔴 LIVE INTERACTIVE DEMO (THE VAULT)](https://qantum-fortres.github.io/QAntum-SaaS-Platform/)** - Enter The Vault.
+
 > AI-Powered QA + Revenue Generation Engine | **1,209,902 Lines of Code** | **52,573 Vectors**
 
 ```
@@ -150,6 +152,7 @@ node scripts/start-reaper.js --mode live --capital 5000 --minProfit 1.5
 | **TOTAL** | **1,612** | **1,209,902** | Complete system |
 
 ### Code Breakdown
+
 ```
 TypeScript:   550,000+ lines (45.5%)
 JavaScript:   180,000+ lines (14.9%)
@@ -162,6 +165,7 @@ TOTAL:      1,209,902 lines
 ```
 
 ### 8 Departments
+
 ```
 🧠 Intelligence  - AI Core, Neural Networks, ContextAnchor
 ⚡ Omega         - Power Systems, Quantum Bridge
