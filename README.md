@@ -206,9 +206,8 @@ TOTAL:      1,209,902 lines
 
 | Repo | Purpose |
 |------|---------|
-| [QA-Framework](https://github.com/papica777-eng/QA-Framework) | Main framework |
-| [QAntumQATool](https://github.com/papica777-eng/QAntumQATool) | CLI tool |
-| [QAntumPage](https://github.com/papica777-eng/QAntumPage) | Landing page |
+| [QANTUM CORE-ENGINE](https://github.com/QAntum-Fortres/QAntum-FRAMEWORK) | The Core Engine |
+| [LIVE PORTFOLIO](https://qantum-fortres.github.io/PORTFOLIO/) | Real-time System Demo |
 
 ---
 
