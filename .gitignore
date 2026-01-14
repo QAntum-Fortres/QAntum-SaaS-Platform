@@ -1,0 +1,52 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  QANTUM v34.1 - Git Ignore Configuration
+#  UPDATED: 2 Jan 2026 - Reduced hiding, maximum transparency
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Dependencies (KEEP - това е 10M+ lines от чужд код)
+node_modules/
+
+# Sensitive Data (CRITICAL - NEVER COMMIT!)
+.env
+.env.local
+.env.*.local
+**/api_keys.json
+**/secrets.json
+.env.fortress
+
+# OS Generated
+.DS_Store
+Thumbs.db
+
+# Logs (runtime generated)
+*.log
+npm-debug.log*
+
+# Large Files (AI Models - too big for git)
+*.gguf
+*.bin
+
+# Temp files
+*.tmp
+*.temp
+
+# Chrome drivers (platform specific)
+chromedriver*
+geckodriver*
+
+# Build cache
+*.tsbuildinfo
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  ВЕЧЕ НЕ СЕ КРИЯТ (commit всичко!)
+# ═══════════════════════════════════════════════════════════════════════════
+# _deprecated/          - ПОКАЗВА СЕ (история)
+# _archive/             - ПОКАЗВА СЕ (архив)
+# output/               - ПОКАЗВА СЕ (резултати)
+# dist/                 - ПОКАЗВА СЕ (build)
+# coverage/             - ПОКАЗВА СЕ (тестове)
+# .vscode/              - ПОКАЗВА СЕ (настройки)
+# chronos-data/         - ПОКАЗВА СЕ (AI данни)
+# memory.json files     - ПОКАЗВА СЕ (памет)
+# screenshots/          - ПОКАЗВА СЕ (визуални тестове)
+# logs/                 - ПОКАЗВА СЕ (диагностика)
