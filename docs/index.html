@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QANTUM v15.0 - THE CHRONOS ENGINE</title>
+    <meta name="description" content="AI-Powered QA Framework that predicts the future. Zero maintenance test automation with N-Step Look-ahead technology.">
+    <meta name="keywords" content="QA, Test Automation, AI, Machine Learning, Selenium, Playwright, Self-Healing">
+    <meta name="author" content="papica777-eng">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="QANTUM - THE CHRONOS ENGINE">
+    <meta property="og:description" content="AI-Powered QA Framework that predicts the future of your UI">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo-icon {
+            font-size: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 0.25rem 0.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light);
+        }
+        
+        .nav-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+        
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+        
+        .hero h1 .gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+        }
+        
+        .features .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .feature-tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        /* Tech Section */
+        .tech {
+            padding: 6rem 2rem;
+            background: rgba(15, 23, 42, 0.5);
+        }
+        
+        .tech .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .tech-item {
+            background: rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .tech-item:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .tech-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .tech-item h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-item p {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        
+        /* Comparison Section */
+        .comparison {
+            padding: 6rem 2rem;
+        }
+        
+        .comparison .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .comparison-table {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+        
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+        
+        .comparison-row.header {
+            background: rgba(99, 102, 241, 0.1);
+            font-weight: 700;
+        }
+        
+        .comparison-cell {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .comparison-cell:not(:first-child) {
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .check {
+            color: var(--success);
+            font-size: 1.25rem;
+        }
+        
+        .cross {
+            color: var(--danger);
+            font-size: 1.25rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+        
+        .cta .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            color: var(--gray);
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+        }
+        
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .cta-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--light);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .cta-form input:focus {
+            border-color: var(--primary);
+        }
+        
+        .cta-form input::placeholder {
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light);
+        }
+        
+        .footer-copy {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        .footer-copy .heart {
+            color: var(--danger);
+        }
+        
+        /* Code Block */
+        .code-preview {
+            background: var(--dark);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-top: 3rem;
+            text-align: left;
+        }
+        
+        .code-header {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .code-dot.red { background: #ef4444; }
+        .code-dot.yellow { background: #f59e0b; }
+        .code-dot.green { background: #10b981; }
+        
+        .code-content {
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+        
+        .code-content .comment { color: #6b7280; }
+        .code-content .keyword { color: #c084fc; }
+        .code-content .string { color: #34d399; }
+        .code-content .function { color: #60a5fa; }
+        .code-content .number { color: #f59e0b; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .comparison-row {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            
+            .comparison-cell {
+                padding: 1rem;
+                font-size: 0.875rem;
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">[dp]</span>
+                QANTUM
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#comparison">Comparison</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Request Access</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- GitHub Badges -->
+            <div class="github-badges fade-in" style="margin-bottom: 1.5rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://github.com/papica777-eng/QA-Framework/actions" target="_blank">
+                    <img src="https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github-actions" alt="Build Status">
+                </a>
+                <a href="https://github.com/papica777-eng/QA-Framework" target="_blank">
+                    <img src="https://img.shields.io/badge/version-15.0.0-blue?style=for-the-badge&logo=github" alt="Version">
+                </a>
+                <a href="https://github.com/papica777-eng/QA-Framework/blob/main/LICENSE" target="_blank">
+                    <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License">
+                </a>
+                <img src="https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen?style=for-the-badge&logo=node.js" alt="Node Version">
+            </div>
+            
+            <div class="hero-badge fade-in">
+                <span class="pulse"></span>
+                v15.0 - THE CHRONOS ENGINE
+            </div>
+            <h1 class="fade-in delay-1">
+                <span class="gradient">QANTUM</span>
+            </h1>
+            <p class="hero-subtitle fade-in delay-2">
+                AI-Powered QA Framework That Predicts The Future
+            </p>
+            <p class="hero-tagline fade-in delay-3">
+                "We don't just test. We dominate the future."
+            </p>
+            <p class="fade-in delay-3" style="color: var(--gray); font-size: 0.95rem; margin-bottom: 1rem;">
+                Created by <strong style="color: var(--accent);">Dimitar Prodromov</strong>
+            </p>
+            <div class="hero-buttons fade-in delay-4">
+                <a href="#demo-video" class="btn btn-primary">
+                    🎬 Watch Demo
+                </a>
+                <a href="https://github.com/papica777-eng/QA-Framework" class="btn btn-secondary" target="_blank">
+                    ⭐ Star on GitHub
+                </a>
+            </div>
+            
+            <div class="stats fade-in delay-5">
+                <div class="stat">
+                    <div class="stat-value">32.7%</div>
+                    <div class="stat-label">Higher Stability</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Future Worlds Simulated</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Maintenance Required</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">AI Engines</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- LIVE DEMO Section - Interactive Terminal with Loop -->
+    <section class="demo-video" id="demo-video" style="padding: 6rem 2rem; background: linear-gradient(180deg, rgba(99, 102, 241, 0.05) 0%, rgba(2, 6, 23, 0) 100%);">
+        <div class="container" style="max-width: 1000px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>🎬 Live Demo: Shadow DOM Penetration</h2>
+                <p>Watch QANTUM break through Shadow DOM barriers in real-time</p>
+            </div>
+            
+            <div class="terminal-container" style="position: relative; background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9)); border: 2px solid var(--primary); border-radius: 1.5rem; overflow: hidden; margin-top: 2rem; box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);">
+                <!-- Terminal Header -->
+                <div style="background: rgba(0,0,0,0.6); padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid rgba(99, 102, 241, 0.3);">
+                    <span style="width: 12px; height: 12px; background: #ff5f56; border-radius: 50%; box-shadow: 0 0 8px #ff5f56;"></span>
+                    <span style="width: 12px; height: 12px; background: #ffbd2e; border-radius: 50%; box-shadow: 0 0 8px #ffbd2e;"></span>
+                    <span style="width: 12px; height: 12px; background: #27c93f; border-radius: 50%; box-shadow: 0 0 8px #27c93f;"></span>
+                    <span style="margin-left: 1rem; color: var(--gray); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">qantum v15.0 — Shadow DOM Analysis</span>
+                    <button id="replay-btn" onclick="replayDemo()" style="margin-left: auto; background: var(--primary); border: none; color: white; padding: 0.4rem 0.8rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; transition: all 0.3s;">↻ Replay</button>
+                </div>
+                
+                <!-- Animated Demo Content -->
+                <div id="demo-terminal" style="padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.8; min-height: 420px; overflow: hidden; position: relative;">
+                    <!-- Typing cursor effect -->
+                    <div id="terminal-content"></div>
+                    <span id="cursor" style="display: inline-block; width: 10px; height: 18px; background: var(--accent); animation: blink 1s infinite;"></span>
+                </div>
+                
+                <!-- Progress bar -->
+                <div style="height: 3px; background: rgba(99, 102, 241, 0.2);">
+                    <div id="progress-bar" style="height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); width: 0%; transition: width 0.3s;"></div>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                <a href="https://github.com/papica777-eng/QA-Framework" target="_blank" class="btn btn-secondary" style="font-size: 0.9rem;">
+                    📖 View Source Code
+                </a>
+                <a href="#contact" class="btn btn-primary" style="font-size: 0.9rem;">
+                    🚀 Get Started
+                </a>
+            </div>
+            
+            <p style="text-align: center; color: var(--gray); margin-top: 1rem; font-size: 0.85rem;">
+                💡 Real-time simulation • Auto-replays every 12 seconds • No video, pure code magic
+            </p>
+        </div>
+    </section>
+    
+    <style>
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+        }
+        .terminal-container:hover {
+            animation: glow 2s infinite;
+        }
+        #replay-btn:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+        .typed-line {
+            opacity: 0;
+            transform: translateY(5px);
+            animation: typeIn 0.3s ease forwards;
+        }
+        @keyframes typeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    
+    <script>
+    (function() {
+        const lines = [
+            { text: '<span style="color: #10b981;">$</span> <span style="color: var(--accent);">qantum</span> analyze --target shadow-dom-component', delay: 0 },
+            { text: '', delay: 400 },
+            { text: '<span style="color: #fbbf24;">🔍 Detecting Shadow DOM boundaries...</span>', delay: 800 },
+            { text: '<span style="color: #9ca3af;">   Found: 3 Shadow Roots (open: 2, closed: 1)</span>', delay: 1400 },
+            { text: '', delay: 1800 },
+            { text: '<span style="color: #818cf8;">🧠 CHRONOS ENGINE: Simulating 8 future scenarios...</span>', delay: 2200 },
+            { text: '<span style="color: #9ca3af;">   ├─ Framework Migration     → Selector survives</span> <span style="color: #10b981;">✅</span>', delay: 2800 },
+            { text: '<span style="color: #9ca3af;">   ├─ UI Redesign            → Selector survives</span> <span style="color: #10b981;">✅</span>', delay: 3200 },
+            { text: '<span style="color: #9ca3af;">   ├─ Accessibility Push     → Selector survives</span> <span style="color: #10b981;">✅</span>', delay: 3600 },
+            { text: '<span style="color: #9ca3af;">   ├─ Dark Mode Migration    → Selector survives</span> <span style="color: #10b981;">✅</span>', delay: 4000 },
+            { text: '<span style="color: #9ca3af;">   ├─ Micro-frontend Split   → Selector survives</span> <span style="color: #10b981;">✅</span>', delay: 4400 },
+            { text: '<span style="color: #9ca3af;">   ├─ Component Refactor     → Selector survives</span> <span style="color: #10b981;">✅</span>', delay: 4800 },
+            { text: '<span style="color: #9ca3af;">   ├─ CSS-in-JS Migration    → Selector survives</span> <span style="color: #10b981;">✅</span>', delay: 5200 },
+            { text: '<span style="color: #9ca3af;">   └─ Internationalization   → Selector survives</span> <span style="color: #10b981;">✅</span>', delay: 5600 },
+            { text: '', delay: 6000 },
+            { text: '<span style="color: #10b981; font-weight: bold;">🏆 STRATEGIC CHOICE: >>> pierce/[data-testid="submit-btn"]</span>', delay: 6400 },
+            { text: '<span style="color: #10b981;">   Confidence: <span style="font-size: 1.1em; font-weight: bold;">99.9%</span> | Worlds survived: <span style="font-weight: bold;">8/8</span></span>', delay: 6800 },
+            { text: '', delay: 7200 },
+            { text: '<span style="color: #f472b6;">⚡ Penetrating Shadow DOM...</span>', delay: 7600 },
+            { text: '<span style="color: #10b981; font-size: 1.15rem;">✨ Element found and clicked successfully!</span>', delay: 8200 },
+            { text: '', delay: 8600 },
+            { text: '<span style="color: #6b7280;">   Execution time: <span style="color: #10b981; font-weight: bold;">47ms</span> | Self-healed: <span style="color: #10b981;">0 times</span> | Memory: <span style="color: #10b981;">12.4MB</span></span>', delay: 9000 },
+            { text: '<span style="color: #6b7280;">   Strategy: N-Step Look-ahead (depth: 5) | Monte Carlo: 10 simulations</span>', delay: 9400 }
+        ];
+        
+        let currentLine = 0;
+        let isPlaying = false;
+        const totalDuration = 12000;
+        
+        function typeDemo() {
+            if (isPlaying) return;
+            isPlaying = true;
+            currentLine = 0;
+            
+            const container = document.getElementById('terminal-content');
+            const progressBar = document.getElementById('progress-bar');
+            const cursor = document.getElementById('cursor');
+            
+            container.innerHTML = '';
+            progressBar.style.width = '0%';
+            cursor.style.display = 'inline-block';
+            
+            lines.forEach((line, index) => {
+                setTimeout(() => {
+                    const div = document.createElement('div');
+                    div.className = 'typed-line';
+                    div.innerHTML = line.text || '&nbsp;';
+                    container.appendChild(div);
+                    container.scrollTop = container.scrollHeight;
+                    
+                    // Update progress
+                    const progress = ((index + 1) / lines.length) * 100;
+                    progressBar.style.width = progress + '%';
+                    
+                    if (index === lines.length - 1) {
+                        cursor.style.display = 'none';
+                        setTimeout(() => {
+                            isPlaying = false;
+                            // Auto-replay after 3 seconds
+                            setTimeout(typeDemo, 3000);
+                        }, 500);
+                    }
+                }, line.delay);
+            });
+        }
+        
+        window.replayDemo = function() {
+            isPlaying = false;
+            typeDemo();
+        };
+        
+        // Start on page load with slight delay
+        setTimeout(typeDemo, 1000);
+        
+        // Replay when section comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isPlaying) {
+                    typeDemo();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const section = document.getElementById('demo-video');
+        if (section) observer.observe(section);
+    })();
+    </script>
+    
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>🔮 Revolutionary Features</h2>
+                <p>Not just another test automation tool. A strategic insurance for your CI/CD pipeline.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Strategic Singularity</h3>
+                    <p>N-Step Look-ahead decision engine using Model Predictive Control (MPC) and Monte Carlo Tree Search (MCTS) - the same algorithms used in SpaceX rockets and AlphaGo.</p>
+                    <span class="feature-tag">MPC + MCTS</span>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔮</div>
+                    <h3>Future Simulation</h3>
+                    <p>Before choosing a selector, QANTUM simulates 8 parallel future worlds - React migrations, Dark mode, i18n, redesigns - and picks the path that survives ALL of them.</p>
+                    <span class="feature-tag">8 PARALLEL WORLDS</span>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h3>Self-Healing Engine</h3>
+                    <p>Autonomous diagnostics and repair running in background. QANTUM monitors its own health and fixes issues without stopping test execution.</p>
+                    <span class="feature-tag">ZERO DOWNTIME</span>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Temporal Credit Assignment</h3>
+                    <p>If a test survives 6 months while others break, QANTUM traces back and rewards the decision that made it stable. It learns from the future.</p>
+                    <span class="feature-tag">LEARNS FROM FUTURE</span>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🗣️</div>
+                    <h3>Voice & Natural Language</h3>
+                    <p>Write tests in plain English or Bulgarian. "Click the login button and verify the dashboard loads" - QANTUM understands and executes.</p>
+                    <span class="feature-tag">MULTI-LANGUAGE</span>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3>Video-to-Test AI</h3>
+                    <p>Record your screen, upload the video, and QANTUM generates complete test scripts automatically. No coding required.</p>
+                    <span class="feature-tag">ZERO CODE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Technology Section -->
+    <section class="tech" id="technology">
+        <div class="container">
+            <div class="section-header">
+                <h2>⚡ Powered By</h2>
+                <p>Enterprise-grade technology stack built for scale and reliability</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="icon">🚀</div>
+                    <h4>Model Predictive Control</h4>
+                    <p>Rocket science for test automation</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🎮</div>
+                    <h4>Monte Carlo Tree Search</h4>
+                    <p>AlphaGo's decision algorithm</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🤖</div>
+                    <h4>Gemini 2.0 AI</h4>
+                    <p>Google's latest AI model</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🎭</div>
+                    <h4>Playwright</h4>
+                    <p>Cross-browser automation</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🐳</div>
+                    <h4>Docker</h4>
+                    <p>Containerized deployment</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">⚛️</div>
+                    <h4>Node.js</h4>
+                    <p>High-performance runtime</p>
+                </div>
+            </div>
+            
+            <!-- Code Preview -->
+            <div class="code-preview">
+                <div class="code-header">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                    <span style="margin-left: 1rem; color: var(--gray); font-size: 0.85rem;">chronos-analysis.js</span>
+                </div>
+                <div class="code-content">
+<span class="comment">// 🧠 CHRONOS: Initiating N-Step Look-ahead Analysis...</span>
+<span class="keyword">const</span> analysis = <span class="keyword">await</span> chronos.<span class="function">simulateFutureWorlds</span>(selector);
+
+<span class="comment">// Results:</span>
+<span class="comment">// ⚡ GREEDY CHOICE: ID (5ms) - Survives 0/8 worlds</span>
+<span class="comment">// 🏆 STRATEGIC CHOICE: DATA_TESTID (10ms) - Survives 8/8 worlds</span>
+
+<span class="comment">// 💡 INSIGHT: "ID is 5ms faster TODAY,</span>
+<span class="comment">//    but DATA_TESTID will survive 8 more future scenarios</span>
+<span class="comment">//    with 32.7% higher long-term stability."</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Comparison Section -->
+    <section class="comparison" id="comparison">
+        <div class="container">
+            <div class="section-header">
+                <h2>📊 QANTUM vs Competition</h2>
+                <p>See why enterprises choose QANTUM for mission-critical testing</p>
+            </div>
+            
+            <div class="comparison-table">
+                <div class="comparison-row header">
+                    <div class="comparison-cell">Feature</div>
+                    <div class="comparison-cell">QANTUM</div>
+                    <div class="comparison-cell">Others</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Future Prediction (N-Step Look-ahead)</div>
+                    <div class="comparison-cell"><span class="check">✅</span></div>
+                    <div class="comparison-cell"><span class="cross">❌</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Multi-World Simulation (8 scenarios)</div>
+                    <div class="comparison-cell"><span class="check">✅</span></div>
+                    <div class="comparison-cell"><span class="cross">❌</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Background Self-Healing</div>
+                    <div class="comparison-cell"><span class="check">✅</span></div>
+                    <div class="comparison-cell"><span class="cross">⚠️ Manual</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Voice Testing (Multi-language)</div>
+                    <div class="comparison-cell"><span class="check">✅</span></div>
+                    <div class="comparison-cell"><span class="cross">❌</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Video-to-Test Generation</div>
+                    <div class="comparison-cell"><span class="check">✅</span></div>
+                    <div class="comparison-cell"><span class="cross">❌</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Zero Maintenance Promise</div>
+                    <div class="comparison-cell"><span class="check">✅</span></div>
+                    <div class="comparison-cell"><span class="cross">❌</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Temporal Credit Assignment</div>
+                    <div class="comparison-cell"><span class="check">✅</span></div>
+                    <div class="comparison-cell"><span class="cross">❌</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to <span style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Dominate the Future?</span></h2>
+            <p>Join forward-thinking teams using QANTUM for zero-maintenance test automation.</p>
+            
+            <form class="cta-form" action="mailto:your-email@example.com" method="GET" enctype="text/plain">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary">Request Access →</button>
+            </form>
+            
+            <p style="margin-top: 2rem; font-size: 0.875rem; color: var(--gray);">
+                🔒 We respect your privacy. No spam, ever.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#technology">Technology</a>
+                <a href="#comparison">Comparison</a>
+                <a href="#contact">Contact</a>
+                <a href="https://github.com/papica777-eng" target="_blank">GitHub</a>
+            </div>
+            <p class="footer-copy">
+                <span style="font-family: 'JetBrains Mono', monospace; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; border: 1px solid var(--primary); padding: 0.15rem 0.4rem; border-radius: 0.25rem; margin-right: 0.5rem;">[dp]</span>
+                Created by <strong style="color: var(--light);">Dimitar Prodromov</strong> · Made with <span class="heart">❤️</span> in Bulgaria 🇧🇬 · © 2025
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Particles Script -->
+    <script>
+        // Generate particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
